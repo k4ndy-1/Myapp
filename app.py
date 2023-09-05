@@ -20,26 +20,26 @@ st.dataframe(df)
 #Sidebar
 
 st.sidebar.header("Please Filter it here")
-job=st.sidebar.multiselect(
+Job=st.sidebar.multiselect(
     "Select the job:",
     options=df["job"].unique(),
     default=df["job"].unique()
 )
 
-loan=st.sidebar.multiselect(
+Loan=st.sidebar.multiselect(
     "Select the entries with loan:",
     options=df["loan"].unique(),
     default=df["loan"].unique()
 )
 
-month=st.sidebar.multiselect(  # we filter the data on basis of month ,loan and job by pandas library
+Month=st.sidebar.multiselect(  # we filter the data on basis of month ,loan and job by pandas library
     "Select the entries with specific month",
     options=df["month"].unique(),
     default=df["month"].unique()
 )
 
 df_selection=df.query(  # return filtered dataset to our webapp instead of all the data
-    "City == @city & Customer_type == @customer_type & Gender == @gender"
+    "Job== @job & Loan == @loan & Month == @month"
 )
 
 
