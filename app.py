@@ -81,7 +81,7 @@ job_bal_chart= px.bar(
     x="balance",
     y=job_by_bal_line.index,
     orientation="h",
-    title="<b>Job Balance Interrelation </b>",
+    title="<b>Job & Balance Interrelation </b>",
     color_discrete_sequence=["#0083B8"] * len(job_by_bal_line),
     template="plotly_white",
 )
@@ -101,9 +101,22 @@ job_dur_chart=px.density_heatmap(
     data_frame=job_by_dur,
     y="duration",
     x=job_by_dur.index,
+    title="<b>Job & Duration of Loan Interrelation </b>",
 )
 
 st.plotly_chart(job_dur_chart)
+
+#Hide Streamlit Styles
+
+hide_st_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """
+
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 
