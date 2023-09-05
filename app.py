@@ -103,7 +103,7 @@ fig_jobdur_chart=px.bar(
     y="Duration",
     title="<b>Job by duration</b>",
     color_discrete_sequence=["#0083B8"]*len(job_by_dur),
-    template="plotly_white"
+    template="plotly_white",
 )
 
 st.plotly_chart(fig_jobdur_chart)
