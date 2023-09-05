@@ -70,6 +70,28 @@ with right_col:
 st.markdown("---") # divider
 
 
+#bar chart job by balance
+
+job_by_bal_line=(
+    df.groupby(by=["job"]).sum()[["balance"]].sort_values(by="balance")
+)
+
+job_bal_chart= px.bar(
+    job_by_bal_line,
+    x="balance"
+    y=job_by_bal_line.index,
+    orientation="h",
+    title="<b>Job Balance Interrelation </b>",
+    color_discrete_sequence=["#0083B8"] * len(job_by_bal_line),
+    template="plotly_white",
+)
+
+st.plotly_chart(job_bal_chart)
+
+
+
+
+
 
 
 
