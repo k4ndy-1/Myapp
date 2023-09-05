@@ -51,9 +51,9 @@ st.markdown("##")
 
 left_col,mid_col,right_col=st.columns(3)
 
-mean_balance=int(df_selection["balance"].mean(),2)
-median_balance=int(df_selection["balance"].median(),2)
-mean_to_med=(mean_balance/median_balance)
+mean_balance=int(df_selection["balance"].mean())
+median_balance=int(df_selection["balance"].median())
+mean_to_med=round((mean_balance/median_balance),2)
 
 with left_col:
     st.subheader("Mean Balance")
@@ -64,7 +64,7 @@ with mid_col:
     st.subheader("Median Balance")
     st.subheader(f"INR {median_balance:,}")
 with right_col:
-    st.subheader("leverage")
+    st.subheader("Mean to Median Ratio")
     st.subheader(f"INR {mean_to_med:,}")
 
 st.markdown("---") # divider
