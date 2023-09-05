@@ -55,11 +55,8 @@ leverage=int((df_selection["loan"])/(df_selection["balance"]))'''
 
 
 
-left_col =st.columns(1)
-
-with left_col:
-    st.subheader("Total loan")
-    st.subheader(f"INR {total_loan:,}")
+st.subheader("Total loan")
+st.subheader(f"INR {total_loan:,}")
 '''with mid_col:
     st.subheader("Mean Balance")
     st.subheader(f"INR {median_balance:,}")
