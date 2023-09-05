@@ -49,15 +49,23 @@ st.markdown("##")
 
 #KPI
 
-#total_loan=df_selection["loan"].sum()
-median_balance=int(df_selection["balance"].median())
-#leverage=int((df_selection["loan"])/(df_selection["balance"]))
+left_col,mid_col,right_col=st.columns(3)
 
-st.subheader("Mean Balance")
-st.subheader(f"INR {median_balance:,}")
-'''with right_col:
+mean_balance=int(df_selection["balance"].mean())
+median_balance=int(df_selection["balance"].median())
+mean_to_med=int(mean_balance/median_balance)
+
+with left_col:
+    st.subheader("Mean Balance")
+    st.subheader(f"INR {mean_balance:,}")
+    
+
+with mid_col:
+    st.subheader("Median Balance")
+    st.subheader(f"INR {median_balance:,}")
+with right_col:
     st.subheader("leverage")
-    st.subheader(f"INR {leverage:,}")'''
+    st.subheader(f"INR {mean_to_med:,}")
 
 st.markdown("---") # divider
 
