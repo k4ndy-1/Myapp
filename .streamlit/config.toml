@@ -1,0 +1,21 @@
+[theme]
+
+#primary accent for webpage
+
+primaryColor="#E694FF"
+
+#Background color
+
+backgroundColor="#00172B"
+
+#Background color for sidebar and widgets
+
+secondaryBackgroundColor="#0083B8"
+
+#Color used for almost all text
+
+textColor="#FFF"
+
+#Font family
+
+font="sans-serif"
