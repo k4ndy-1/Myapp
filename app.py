@@ -15,7 +15,7 @@ st.set_page_config(  # setup the webpage
 
 df=pd.read_csv("https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv")
 
-st.dataframe(df)
+
 
 #Sidebar
 
@@ -44,28 +44,28 @@ df_selection=df.query(
 
 # ######MAINPAGE#########
 
-st.title(":dollar_banknote: Loan Retrieval Information")
+st.title("Loan Retrieval Information")
 st.markdown("##")
 
 #KPI
 
-total_loan=int(df_selection["loan"].sum())
-median_balance=int(df_selection["balance"].median())
-leverage=int((df_selection["loan"])/(df_selection["balance"]))
+total_loan=int(df_selection["Loan"].sum())
+'''median_balance=int(df_selection["balance"].median())
+leverage=int((df_selection["loan"])/(df_selection["balance"]))'''
 
 
 
-left_col,mid_col,right_col =st.columns(3)
+left_col =st.columns(1)
 
 with left_col:
     st.subheader("Total loan")
     st.subheader(f"INR {total_loan:,}")
-with mid_col:
+'''with mid_col:
     st.subheader("Mean Balance")
     st.subheader(f"INR {median_balance:,}")
 with right_col:
     st.subheader("leverage")
-    st.subheader(f"INR {leverage:,}")
+    st.subheader(f"INR {leverage:,}")'''
 
 st.markdown("---") # divider
 
