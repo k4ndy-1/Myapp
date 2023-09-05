@@ -53,7 +53,7 @@ left_col,mid_col,right_col=st.columns(3)
 
 mean_balance=int(df_selection["balance"].mean())
 median_balance=int(df_selection["balance"].median())
-mean_to_med=float(mean_balance/median_balance)
+mean_to_med=float((mean_balance/median_balance),3)
 
 with left_col:
     st.subheader("Mean Balance")
