@@ -38,12 +38,9 @@ Month=st.sidebar.multiselect(  # we filter the data on basis of month ,loan and 
     default=df["month"].unique()
 )
 
-df_selection=df.query(  # return filtered dataset to our webapp instead of all the data
-    "Job== @job & Loan == @loan & Month == @month"
-)
 
 
-st.dataframe(df_selection)
+
 
 
 
