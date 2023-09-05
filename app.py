@@ -49,7 +49,7 @@ st.markdown("##")
 
 #KPI
 
-total_loan=int(df_selection["loan"].sum())
+total_loan=df_selection["loan"].sum()
 '''median_balance=int(df_selection["balance"].median())
 leverage=int((df_selection["loan"])/(df_selection["balance"]))'''
 
