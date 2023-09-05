@@ -98,6 +98,7 @@ st.plotly_chart(job_bal_chart)
 
 job_by_dur=df.groupby(by=["job"]).sum()[["duration"]].sort_values(by="duration")
 job_dur_chart=px.density_heatmap(
+    data_frame=job_by_dur
     y="Duration",
     x=job_by_dur.index,
 )
