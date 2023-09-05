@@ -78,8 +78,8 @@ job_by_bal_line=(
 
 job_bal_chart= px.bar(
     job_by_bal_line,
-    x="balance"
-    y="Job",
+    x="balance",
+    y=job_by_bal_line.index,
     orientation="h",
     title="<b>Job Balance Interrelation </b>",
     color_discrete_sequence=["#0083B8"] * len(job_by_bal_line),
