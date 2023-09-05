@@ -87,7 +87,7 @@ job_bal_chart= px.bar(
 )
 
 job_bal_chart.update_layout(
-    plot.bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
     xaxis=(dict(showgrid=False))
 )
 
