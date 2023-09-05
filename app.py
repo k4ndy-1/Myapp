@@ -107,7 +107,7 @@ job_dur_chart=px.density_heatmap(
 st.plotly_chart(job_dur_chart)
 
 
-st.dataframe(df)
+st.dataframe(df_selection)
 
 #Hide Streamlit Styles
 
