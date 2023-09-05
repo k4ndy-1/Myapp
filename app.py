@@ -38,9 +38,8 @@ Month=st.sidebar.multiselect(  # we filter the data on basis of month ,loan and 
     default=df["month"].unique()
 )
 
-
 df_selection=df.query(
-    "Job==@job"
+    df["job"]==Job,
 )
 
 st.dataframe(df_selection)
