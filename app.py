@@ -97,11 +97,12 @@ st.plotly_chart(job_bal_chart)
 #Job to duration chart
 
 job_by_dur=df.groupby(by=["job"]).sum()[["duration"]].sort_values(by="duration")
-job_dur_chart=px.heatmap(
+job_dur_chart=px.density_heatmap(
     y="Duration",
+    x=job_by_dur.index,
 )
 
-st.plotly_chart(fig_jobdur_chart)
+st.plotly_chart(job_dur_chart)
 
 
 
