@@ -86,6 +86,13 @@ job_bal_chart= px.bar(
     template="plotly_white",
 )
 
+job_bal_chart.update_layout(
+    plot.bgcolor="rgba(0,0,0,0)"
+    xaxis=(dict(showgrid=False)
+          )
+)
+
+
 st.plotly_chart(job_bal_chart)
 
 
