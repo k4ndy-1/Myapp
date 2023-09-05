@@ -44,7 +44,7 @@ df_selection=df.query(
 
 # ######MAINPAGE#########
 
-st.title("Loan Retrieval Information")
+st.title("Bank Retrieval Information")
 st.markdown("##")
 
 #KPI
