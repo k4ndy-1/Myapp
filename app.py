@@ -98,7 +98,8 @@ st.plotly_chart(job_bal_chart)
 
 st.dataframe(df_selection)
 
-st.subtitle("Probability of defaulting")
+st.markdown("# Page 2 ❄️")
+st.sidebar.markdown("# Page 2 ❄️")
 
 
 
