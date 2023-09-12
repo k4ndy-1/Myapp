@@ -14,7 +14,7 @@ st.set_page_config(  # setup the webpage
 #read the file
 
 df=pd.read_csv("https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv")
-df2=pd.read_csv("")
+
 
 
 
