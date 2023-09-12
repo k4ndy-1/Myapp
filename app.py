@@ -98,7 +98,7 @@ st.plotly_chart(job_bal_chart)
 
 st.dataframe(df_selection)
 
-st.markdown("# Page 2 ❄️")
+st.markdown("# Probability of defaulting")
 st.sidebar.markdown("# Page 2 ❄️")
 
 
