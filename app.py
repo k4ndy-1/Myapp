@@ -95,18 +95,6 @@ job_bal_chart.update_layout(
 
 st.plotly_chart(job_bal_chart)
 
-#Job to duration chart
-
-job_by_dur=df.groupby(by=["job"]).sum()[["duration"]].sort_values(by="duration")
-job_dur_chart=px.density_heatmap(
-    data_frame=job_by_dur,
-    y="duration",
-    x=job_by_dur.index,
-    title="<b>Job & Duration of Loan Interrelation </b>",
-)
-
-st.plotly_chart(job_dur_chart)
-
 
 st.dataframe(df_selection)
 
