@@ -6,36 +6,7 @@ import plotly.express as px
 
 import streamlit as st
 
-# Define a username and password for authentication
-username = "your_username"
-password = "your_password"
 
-# Create a Streamlit app
-st.title("Login Page")
-
-# Add input widgets for username and password
-user_input = st.text_input("Username:")
-pass_input = st.text_input("Password:", type="password")
-
-# Create a login button
-login_button = st.button("Login")
-
-# Check if the login button is clicked
-if login_button:
-    # Check if the entered username and password match the predefined values
-    if user_input == username and pass_input == password:
-        st.success("Login Successful!")
-        # Add the content you want to display after successful login here
-
-        # Add a Logout button
-        logout_button = st.button("Logout")
-        
-        # Check if the Logout button is clicked
-        if logout_button:
-            st.title("Logged out")
-            st.info("You have been logged out. To log in again, please refresh the page.")
-    else:
-        st.error("Login Failed. Please check your credentials.")
 ###########
 st.set_page_config(  # setup the webpage 
     page_title="Bank Data Management",
