@@ -105,7 +105,7 @@ st.markdown("##")
 
 # Calculate the 'mean_to_median_ratio' and add it to the DataFrame
 if 'balance' in df_selection.columns:
-    df_selection['mean_to_median_ratio'] = df_selection['balance'].mean() / df_selection['balance'].median()
+    df_selection['mean_to_median_ratio'] = df_selection['balance'] / df_selection['balance'].median()
 
 # Define the calculate_default_probability function
 def calculate_default_probability(row, mean_threshold, median_threshold, mean_to_median_ratio_threshold):
