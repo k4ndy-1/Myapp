@@ -48,7 +48,7 @@ df_selection=df.query(
 st.title("💰Bank Retrieval Information💰")
 st.markdown("##")
 
-#KPI
+#KPI or key performance indicator
 
 left_col,mid_col,right_col=st.columns(3)
 
@@ -98,21 +98,7 @@ st.plotly_chart(job_bal_chart)
 
 st.dataframe(df_selection)
 
-# Page 2 - Individual Entry Analysis
-st.title("Individual Entry Analysis")
-st.markdown("##")
 
-# Iterate through each row of the filtered DataFrame
-for index, row in df_selection.iterrows():
-    st.subheader(f"Entry {index + 1}")
-    st.write(f"Job: {row['job']}")
-    st.write(f"Loan: {row['loan']}")
-    st.write(f"Month: {row['month']}")
-    # Display other columns of interest here
-    st.write(f"Balance: INR {row['balance']:,}")
-    st.write(f"Age: {row['age']}")
-    # Add more columns as needed
-    st.markdown("---")  # Add a divider between entries
 
 #Hide Streamlit Styles
 
