@@ -7,37 +7,6 @@ import plotly.express as px
 
 ##########
 
-
-# Define a dictionary of valid usernames and passwords (you can replace this with a database)
-valid_users = {
-    'user1': 'password1',
-    'user2': 'password2',
-}
-
-# Create a Streamlit app
-st.title("Login Page")
-
-# Add input widgets for username and password
-username = st.text_input("Username:")
-password = st.text_input("Password:", type="password")
-
-# Create a login button
-login_button = st.button("Login")
-
-# Check if the login button is clicked
-if login_button:
-    # Check if the entered username is valid
-    if username in valid_users:
-        # Check if the entered password matches the valid password for the username
-        if password == valid_users[username]:
-            st.success("Login Successful!")
-            # Add the content you want to display after successful login here
-        else:
-            st.error("Login Failed. Incorrect Password.")
-    else:
-        st.error("Login Failed. Username not found.")
-
-
 ###########
 
 
