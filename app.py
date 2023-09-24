@@ -191,11 +191,8 @@ if st.session_state.login_successful:
         
 
 
-elif session_state['username'] is not None:
+elif st.session_state.username is not None:
     st.warning("Please log in to access the application.")
-
-
-
 
 
 
