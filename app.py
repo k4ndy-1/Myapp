@@ -9,7 +9,11 @@ import plotly.express as px
 
 ###########
 
-
+st.set_page_config(  # setup the webpage 
+    page_title="Bank Data Management",
+    page_icon=":bar_chart:",
+    layout="wide"
+)
 #read the file
 
 df=pd.read_csv("https://raw.githubusercontent.com/Lexie88rus/bank-marketing-analysis/master/bank.csv")
