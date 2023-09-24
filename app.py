@@ -3,9 +3,8 @@ import numpy as np
 import pandas as pd  #import libraries
 import time
 import plotly.express as px
-import streamlit.server
 
-import streamlit as st
+
 st.set_page_config(  # setup the webpage 
        page_title="Bank Data Management",
        page_icon=":bar_chart:",
