@@ -105,7 +105,7 @@ st.markdown("##")
 
 # Calculate the 'mean_to_median_ratio' and add it to the DataFrame
 if 'balance' in df_selection.columns:
-    df_selection['mean_to_median_ratio'] = df_selection['balance'] / df_selection['balance'].median()
+    df_selection['mean_to_median_ratio'] = df_selection['balance'].mean() / df_selection['balance'].median()
 
 # Define the calculate_default_probability function
 def calculate_default_probability(row, mean_threshold, median_threshold, mean_to_median_ratio_threshold):
@@ -132,17 +132,17 @@ df_selection['default_probability'] = df_selection.apply(lambda row: calculate_d
 # Filter entries with a high probability of defaulting (> 0.90)
 high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
 if high_default_prob_entries.empty:
-    st.markdown("<p style='color:red; font-weight:bold;'>No Such Entries Found</p>")
+    st.markdown("<p style='color:red; font-weight:bold;'>No Such Entries Found</p>",unsafe_allow_html="True")
 else:
     # Display the filtered entries
     for index, row in high_default_prob_entries.iterrows():
-        st.subheader(f"Entry {index + 1}")
+        st.subheader(f"Customer ID {index + 1}")
         st.write(f"Job: {row['job']}")
         st.write(f"Loan: {row['loan']}")
         st.write(f"Month: {row['month']}")
         st.write(f"Balance: INR {row['balance']:,}")
         st.write(f"Age: {row['age']}")
-        st.write(f"Default Probability: {row['default_probability']:.2f}")
+        st.write(f"Contact Details: {row['contact']}")
         st.markdown("---")  # Add a divider between entries
     
 
