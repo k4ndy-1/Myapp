@@ -11,7 +11,6 @@ st.set_page_config(  # setup the webpage
        layout="wide"
 )
 
-
 # Define a dictionary of valid usernames and passwords (you can replace this with a database)
 valid_users = {
     'user1': 'password1',
@@ -20,13 +19,10 @@ valid_users = {
 
 # Function to create a unique session state
 def get_session_state():
-    session = st.report_thread.get_report_ctx().session
-    if not hasattr(session, 'session_state'):
-        session.session_state = {
-            'username': None,
-            'login_successful': False,
-        }
-    return session.session_state
+    if 'username' not in st.session_state:
+        st.session_state.username = None
+    if 'login_successful' not in st.session_state:
+        st.session_state.login_successful = False
 
 # Create a Streamlit app
 st.title("Login Page")
@@ -39,7 +35,7 @@ password = st.text_input("Password:", type="password")
 login_button = st.button("Login")
 
 # Get the session state
-session_state = get_session_state()
+get_session_state()
 
 # Check if the login button is clicked
 if login_button:
@@ -47,13 +43,22 @@ if login_button:
     if username in valid_users:
         # Check if the entered password matches the valid password for the username
         if password == valid_users[username]:
-            session_state['username'] = username
-            session_state['login_successful'] = True
+            st.session_state.username = username
+            st.session_state.login_successful = True
             st.success("Login Successful!")
         else:
             st.error("Login Failed. Incorrect Password.")
     else:
         st.error("Login Failed. Username not found.")
+
+# If login is successful, display the main content
+if st.session_state.login_successful:
+    st.set_page_config(
+        page_title="Bank Data Management",
+        page_icon=":bar_chart:",
+        layout="wide"
+    )
+
 
 # If login is successful, display the main content
 if session_state.get('login_successful'):
