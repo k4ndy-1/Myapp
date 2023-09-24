@@ -53,15 +53,6 @@ if login_button:
 
 # If login is successful, display the main content
 if st.session_state.login_successful:
-    st.set_page_config(
-        page_title="Bank Data Management",
-        page_icon=":bar_chart:",
-        layout="wide"
-    )
-
-
-# If login is successful, display the main content
-if session_state.get('login_successful'):
 
    
     #read the file
