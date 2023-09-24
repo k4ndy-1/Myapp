@@ -101,10 +101,6 @@ st.dataframe(df_selection)
 # Page 2 - Display high probability of defaulting entries
 st.title("High Probability of Defaulting Entries")
 st.markdown("##")
-
-
-
-
 # Calculate the probability of defaulting for each entry
 def calculate_default_probability(row):
     # Define your criteria (mean, median, and mean-median ratio)
