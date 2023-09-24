@@ -39,11 +39,7 @@ if login_button:
 
 
 ###########
-st.set_page_config(  # setup the webpage 
-    page_title="Bank Data Management",
-    page_icon=":bar_chart:",
-    layout="wide"
-)
+
 
 #read the file
 
