@@ -101,55 +101,7 @@ st.dataframe(df_selection)
 # Page 2 - Display high probability of defaulting entries
 st.title("High Probability of Defaulting Entries")
 st.markdown("##")
-# Calculate the probability of defaulting for each entry
-def calculate_default_probability(row):
-    # Define your criteria (mean, median, and mean-median ratio)
-    mean_threshold = 1000  # Adjust as needed
-    median_threshold = 800  # Adjust as needed
-    mean_to_median_ratio_threshold = 1.5  # Adjust as needed
 
-    # Calculate the probability of defaulting based on criteria
-    probability = 0  # Initialize probability
-    if row['balance'] < mean_threshold:
-        probability += 0.3
-    if row['balance'] < median_threshold:
-        probability += 0.3
-    if row['balance'] > mean_to_median_ratio_threshold:
-        probability += 0.4
-
-    return probability
-
-# Calculate the probability of defaulting for each entry
-df_selection['default_probability'] = df_selection.apply(calculate_default_probability, axis=1)
-
-# Filter entries with a probability of defaulting > 0.90
-high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
-
-# Iterate through and display the filtered entries
-for index, row in high_default_prob_entries.iterrows():
-    st.subheader(f"Entr {index + 1}")
-    st.write(f"Job: {row['job']}")
-    st.write(f"Loan: {row['loan']}")
-    st.write(f"Month: {row['month']}")
-    # Display other columns of interest here
-    st.write(f"Balance: INR {row['balance']:,}")
-    st.write(f"Age: {row['age']}")
-    st.write(f"Default Probability: {row['default_probability']:.2f}")
-    # Add more columns as needed
-    st.markdown("---")  # Add a divider between entries
-
-
-#Hide Streamlit Styles
-
-hide_st_style = """
-    <style>
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
-    </style>
-    """
-
-st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 
