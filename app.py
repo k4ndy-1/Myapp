@@ -70,7 +70,7 @@ if not df_selection.empty:
 
     st.markdown("---") # divider
 else:
-    print("No Such Entries Found")
+    st.write("No Such Entries Found")
 #bar chart job by balance
 
 job_by_bal_line=(
@@ -121,9 +121,9 @@ def calculate_default_probability(row, mean_threshold, median_threshold, mean_to
     return probability
 
 # Define threshold values
-mean_threshold = 1000  # if money is less than 1k
-median_threshold = 800  # Adjust as needed
-mean_to_median_ratio_threshold = 1.5  # Adjust as needed
+mean_threshold = 1500  # if money is less than 1k
+median_threshold = 900  # Adjust as needed
+mean_to_median_ratio_threshold = 1.8  # Adjust as needed
 
 # Calculate the probability of defaulting for each entry
 df_selection['default_probability'] = df_selection.apply(lambda row: calculate_default_probability(row, mean_threshold, median_threshold, mean_to_median_ratio_threshold), axis=1)
@@ -131,7 +131,7 @@ df_selection['default_probability'] = df_selection.apply(lambda row: calculate_d
 # Filter entries with a high probability of defaulting (> 0.90)
 high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
 if high_default_prob_entries.empty:
-    print("Nothing Matching Found!")
+    st.write("Nothing Matching Found!")
 else:
     # Display the filtered entries
     for index, row in high_default_prob_entries.iterrows():
