@@ -102,18 +102,7 @@ st.dataframe(df_selection)
 st.title("High Probability of Defaulting Entries")
 st.markdown("##")
 
-# Iterate through and display the filtered entries
-for index, row in high_default_prob_entries.iterrows():
-    st.subheader(f"Entr {index + 1}")
-    st.write(f"Job: {row['job']}")
-    st.write(f"Loan: {row['loan']}")
-    st.write(f"Month: {row['month']}")
-    # Display other columns of interest here
-    st.write(f"Balance: INR {row['balance']:,}")
-    st.write(f"Age: {row['age']}")
-    st.write(f"Default Probability: {row['default_probability']:.2f}")
-    # Add more columns as needed
-    st.markdown("---")  # Add a divider between entries
+
 
 
 # Calculate the probability of defaulting for each entry
@@ -140,7 +129,18 @@ df_selection['default_probability'] = df_selection.apply(calculate_default_proba
 # Filter entries with a probability of defaulting > 0.90
 high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
 
-
+# Iterate through and display the filtered entries
+for index, row in high_default_prob_entries.iterrows():
+    st.subheader(f"Entr {index + 1}")
+    st.write(f"Job: {row['job']}")
+    st.write(f"Loan: {row['loan']}")
+    st.write(f"Month: {row['month']}")
+    # Display other columns of interest here
+    st.write(f"Balance: INR {row['balance']:,}")
+    st.write(f"Age: {row['age']}")
+    st.write(f"Default Probability: {row['default_probability']:.2f}")
+    # Add more columns as needed
+    st.markdown("---")  # Add a divider between entries
 
 
 #Hide Streamlit Styles
