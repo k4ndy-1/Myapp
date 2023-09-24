@@ -49,28 +49,28 @@ st.title("💰Bank Retrieval Information💰")
 st.markdown("##")
 
 #KPI or key performance indicator
-
-left_col,mid_col,right_col=st.columns(3)
-
-mean_balance=int(df_selection["balance"].mean())
-median_balance=int(df_selection["balance"].median())
-mean_to_med=round((mean_balance/median_balance),2)
-
-with left_col:
-    st.subheader("Mean Balance")
-    st.subheader(f"INR {mean_balance:,}")
+if not df_selection.empty:
+    left_col,mid_col,right_col=st.columns(3)
     
+    mean_balance=int(df_selection["balance"].mean())
+    median_balance=int(df_selection["balance"].median())
+    mean_to_med=round((mean_balance/median_balance),2)
+    
+    with left_col:
+        st.subheader("Mean Balance")
+        st.subheader(f"INR {mean_balance:,}")
+        
+    
+    with mid_col:
+        st.subheader("Median Balance")
+        st.subheader(f"INR {median_balance:,}")
+    with right_col:
+        st.subheader("Mean to Median Ratio")
+        st.subheader(f"INR {mean_to_med:,}")
 
-with mid_col:
-    st.subheader("Median Balance")
-    st.subheader(f"INR {median_balance:,}")
-with right_col:
-    st.subheader("Mean to Median Ratio")
-    st.subheader(f"INR {mean_to_med:,}")
-
-st.markdown("---") # divider
-
-
+    st.markdown("---") # divider
+else:
+    print("No Such Entries Found")
 #bar chart job by balance
 
 job_by_bal_line=(
@@ -121,7 +121,7 @@ def calculate_default_probability(row, mean_threshold, median_threshold, mean_to
     return probability
 
 # Define threshold values
-mean_threshold = 1000  # Adjust as needed
+mean_threshold = 1000  # if money is less than 1k
 median_threshold = 800  # Adjust as needed
 mean_to_median_ratio_threshold = 1.5  # Adjust as needed
 
@@ -130,18 +130,20 @@ df_selection['default_probability'] = df_selection.apply(lambda row: calculate_d
 
 # Filter entries with a high probability of defaulting (> 0.90)
 high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
-
-# Display the filtered entries
-for index, row in high_default_prob_entries.iterrows():
-    st.subheader(f"Entry {index + 1}")
-    st.write(f"Job: {row['job']}")
-    st.write(f"Loan: {row['loan']}")
-    st.write(f"Month: {row['month']}")
-    st.write(f"Balance: INR {row['balance']:,}")
-    st.write(f"Age: {row['age']}")
-    st.write(f"Default Probability: {row['default_probability']:.2f}")
-    st.markdown("---")  # Add a divider between entries
-
+if high_default_prob_entries.empty:
+    print("Nothing Matching Found!")
+else:
+    # Display the filtered entries
+    for index, row in high_default_prob_entries.iterrows():
+        st.subheader(f"Entry {index + 1}")
+        st.write(f"Job: {row['job']}")
+        st.write(f"Loan: {row['loan']}")
+        st.write(f"Month: {row['month']}")
+        st.write(f"Balance: INR {row['balance']:,}")
+        st.write(f"Age: {row['age']}")
+        st.write(f"Default Probability: {row['default_probability']:.2f}")
+        st.markdown("---")  # Add a divider between entries
+    
 
 
 
