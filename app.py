@@ -70,7 +70,7 @@ if not df_selection.empty:
 
     st.markdown("---") # divider
 else:
-    st.markdown("<p style='color:red; font-weight:bold;'>No Such Entries Found</p>")
+     st.markdown("<p style='color:red; font-weight:bold;'>No entries found</p>", unsafe_allow_html=True)
 #bar chart job by balance
 
 job_by_bal_line=(
