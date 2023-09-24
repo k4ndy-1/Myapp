@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd  #import libraries
 import time
 import plotly.express as px
-import Server
+import streamlit.server
 
 import streamlit as st
 st.set_page_config(  # setup the webpage 
