@@ -132,7 +132,7 @@ df_selection['default_probability'] = df_selection.apply(lambda row: calculate_d
 # Filter entries with a high probability of defaulting (> 0.90)
 high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
 if high_default_prob_entries.empty:
-    st.markdown("<p style='color:red; font-weight:bold;'>No Such Entries Found</p>",unsafe_allow_html="True")
+     st.markdown("<p style='color:red; font-weight:bold;'>No entries found</p>", unsafe_allow_html=True)
 else:
     # Display the filtered entries
     for index, row in high_default_prob_entries.iterrows():
