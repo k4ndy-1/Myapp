@@ -73,11 +73,13 @@ else:
      st.markdown("<p style='color:red; font-weight:bold;'>No entries found</p>", unsafe_allow_html=True)
 #bar chart job by balance
 
-job_by_bal_line=(
-    df.groupby(by=["job"]).sum()[["balance"]].sort_values(by="balance")
-)
+# Update the bar chart based on the filtered data
+st.title("Job & Balance Interrelation")
+st.markdown("##")
 
-job_bal_chart= px.bar(
+job_by_bal_line = df_selection.groupby(by=["job"]).sum()[["balance"]].sort_values(by="balance")
+
+job_bal_chart = px.bar(
     job_by_bal_line,
     x="balance",
     y=job_by_bal_line.index,
@@ -91,7 +93,6 @@ job_bal_chart.update_layout(
     plot_bgcolor="rgba(0,0,0,0)",
     xaxis=(dict(showgrid=False))
 )
-
 
 st.plotly_chart(job_bal_chart)
 
