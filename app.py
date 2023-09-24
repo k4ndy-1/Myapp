@@ -8,6 +8,12 @@ import plotly.express as px
 ##########
 import streamlit as st
 
+ st.set_page_config(  # setup the webpage 
+        page_title="Bank Data Management",
+        page_icon=":bar_chart:",
+        layout="wide"
+    )
+
 # Define a dictionary of valid usernames and passwords (you can replace this with a database)
 valid_users = {
     'user1': 'password1',
