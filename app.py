@@ -102,6 +102,45 @@ st.dataframe(df_selection)
 st.title("High Probability of Defaulting Entries")
 st.markdown("##")
 
+# Calculate the 'mean_to_median_ratio' and add it to the DataFrame
+if 'balance' in df_selection.columns:
+    df_selection['mean_to_median_ratio'] = df_selection['balance'] / df_selection['balance'].median()
+
+# Define the calculate_default_probability function
+def calculate_default_probability(row, mean_threshold, median_threshold, mean_to_median_ratio_threshold):
+    # Calculate the probability of defaulting based on criteria
+    probability = 0  # Initialize probability
+    if 'balance' in row.index:
+        if row['balance'] < mean_threshold:
+            probability += 0.3
+        if row['balance'] < median_threshold:
+            probability += 0.3
+    if 'mean_to_median_ratio' in row.index and row['mean_to_median_ratio'] > mean_to_median_ratio_threshold:
+        probability += 0.4
+
+    return probability
+
+# Define threshold values
+mean_threshold = 1000  # Adjust as needed
+median_threshold = 800  # Adjust as needed
+mean_to_median_ratio_threshold = 1.5  # Adjust as needed
+
+# Calculate the probability of defaulting for each entry
+df_selection['default_probability'] = df_selection.apply(lambda row: calculate_default_probability(row, mean_threshold, median_threshold, mean_to_median_ratio_threshold), axis=1)
+
+# Filter entries with a high probability of defaulting (> 0.90)
+high_default_prob_entries = df_selection[df_selection['default_probability'] > 0.90]
+
+# Display the filtered entries
+for index, row in high_default_prob_entries.iterrows():
+    st.subheader(f"Entry {index + 1}")
+    st.write(f"Job: {row['job']}")
+    st.write(f"Loan: {row['loan']}")
+    st.write(f"Month: {row['month']}")
+    st.write(f"Balance: INR {row['balance']:,}")
+    st.write(f"Age: {row['age']}")
+    st.write(f"Default Probability: {row['default_probability']:.2f}")
+    st.markdown("---")  # Add a divider between entries
 
 
 
