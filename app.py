@@ -114,7 +114,7 @@ def calculate_default_probability(row):
         probability += 0.3
     if row['balance'] < median_threshold:
         probability += 0.3
-    if row['mean_to_median_ratio'] > mean_to_median_ratio_threshold:
+    if row['balance'] > mean_to_median_ratio_threshold:
         probability += 0.4
 
     return probability
