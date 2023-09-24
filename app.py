@@ -98,10 +98,21 @@ st.plotly_chart(job_bal_chart)
 
 st.dataframe(df_selection)
 
-st.markdown("# Probability of defaulting")
-st.sidebar.markdown("# Page 2 ❄️")
+# Page 2 - Individual Entry Analysis
+st.title("Individual Entry Analysis")
+st.markdown("##")
 
-
+# Iterate through each row of the filtered DataFrame
+for index, row in df_selection.iterrows():
+    st.subheader(f"Entry {index + 1}")
+    st.write(f"Job: {row['job']}")
+    st.write(f"Loan: {row['loan']}")
+    st.write(f"Month: {row['month']}")
+    # Display other columns of interest here
+    st.write(f"Balance: INR {row['balance']:,}")
+    st.write(f"Age: {row['age']}")
+    # Add more columns as needed
+    st.markdown("---")  # Add a divider between entries
 
 #Hide Streamlit Styles
 
